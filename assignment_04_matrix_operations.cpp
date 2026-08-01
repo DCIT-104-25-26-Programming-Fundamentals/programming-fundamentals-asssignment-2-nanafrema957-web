@@ -116,3 +116,102 @@ void multiplyMatrices(int a[MAX_SIZE][MAX_SIZE], int b[MAX_SIZE][MAX_SIZE], int 
         }
     }
 }
+
+int main() {
+    int choice;
+
+    cout << "Matrix Operations Menu" << endl;
+    cout << "1. Transpose a Matrix" << endl;
+    cout << "2. Add Two Matrices" << endl;
+    cout << "3. Multiply Two Matrices" << endl;
+    cout << "Enter choice (1-3): ";
+    cin >> choice;
+
+    if (choice == 1) {
+        // ----- PART A: Transpose -----
+        int rows, cols;
+        int matrix[MAX_SIZE][MAX_SIZE];
+        int result[MAX_SIZE][MAX_SIZE];
+
+        cout << "Enter number of rows: ";
+        cin >> rows;
+        cout << "Enter number of columns: ";
+        cin >> cols;
+
+        readMatrix(matrix, rows, cols);
+        transposeMatrix(matrix, result, rows, cols);
+
+        cout << "\nOriginal Matrix:" << endl;
+        displayMatrix(matrix, rows, cols);
+
+        cout << "\nTransposed Matrix:" << endl;
+        displayMatrix(result, cols, rows);  // note: dimensions swap
+
+    } else if (choice == 2) {
+        // ----- PART B: Addition -----
+        int rows, cols;
+        int a[MAX_SIZE][MAX_SIZE], b[MAX_SIZE][MAX_SIZE], result[MAX_SIZE][MAX_SIZE];
+
+        cout << "Enter number of rows: ";
+        cin >> rows;
+        cout << "Enter number of columns: ";
+        cin >> cols;
+
+        cout << "\nEnter values for Matrix A:" << endl;
+        readMatrix(a, rows, cols);
+
+        cout << "\nEnter values for Matrix B:" << endl;
+        readMatrix(b, rows, cols);
+
+        addMatrices(a, b, result, rows, cols);
+
+        cout << "\nMatrix A:" << endl;
+        displayMatrix(a, rows, cols);
+        cout << "\nMatrix B:" << endl;
+        displayMatrix(b, rows, cols);
+        cout << "\nSum (A + B):" << endl;
+        displayMatrix(result, rows, cols);
+
+    } else if (choice == 3) {
+        // ----- PART C: Multiplication -----
+        int m, n, n2, p;
+        int a[MAX_SIZE][MAX_SIZE], b[MAX_SIZE][MAX_SIZE], result[MAX_SIZE][MAX_SIZE];
+
+        cout << "Matrix A dimensions:" << endl;
+        cout << "Enter number of rows (M): ";
+        cin >> m;
+        cout << "Enter number of columns (N): ";
+        cin >> n;
+
+        cout << "\nMatrix B dimensions:" << endl;
+        cout << "Enter number of rows (must equal N = " << n << "): ";
+        cin >> n2;
+        cout << "Enter number of columns (P): ";
+        cin >> p;
+
+        if (n2 != n) {
+            cout << "\nError: Number of columns in A must equal number of rows in B." << endl;
+            return 0;
+        }
+
+        cout << "\nEnter values for Matrix A:" << endl;
+        readMatrix(a, m, n);
+
+        cout << "\nEnter values for Matrix B:" << endl;
+        readMatrix(b, n, p);
+
+        multiplyMatrices(a, b, result, m, n, p);
+
+        cout << "\nMatrix A:" << endl;
+        displayMatrix(a, m, n);
+        cout << "\nMatrix B:" << endl;
+        displayMatrix(b, n, p);
+        cout << "\nProduct (A x B):" << endl;
+        displayMatrix(result, m, p);
+
+    } else {
+        cout << "Invalid choice." << endl;
+    }
+
+    return 0;
+}
