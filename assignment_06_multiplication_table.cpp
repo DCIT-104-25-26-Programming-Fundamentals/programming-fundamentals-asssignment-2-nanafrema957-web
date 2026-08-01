@@ -79,3 +79,33 @@ void printTablesUpToN(int n) {
         }
     }
 }
+
+int main() {
+    int choice;
+
+    cout << "Multiplication Table Generator" << endl;
+    cout << "1. Single Table" << endl;
+    cout << "2. Tables from 1 to N (Bonus)" << endl;
+    cout << "Enter choice (1-2): ";
+    cin >> choice;
+
+    if (choice == 1) {
+        // ----- PART A -----
+        int number;
+        cout << "Enter a number: ";
+        cin >> number;
+        printTable(number);
+
+    } else if (choice == 2) {
+        // ----- PART B -----
+        int n;
+        cout << "Enter N: ";
+        cin >> n;
+        printTablesUpToN(n);
+
+    } else {
+        cout << "Invalid choice." << endl;
+    }
+
+    return 0;
+}
