@@ -42,3 +42,39 @@
 #include <iostream>
 using namespace std;
 
+// Function to calculate the sum of all elements
+int calculateSum(int arr[], int n) {
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+// Function to calculate the average of all elements
+double calculateAverage(int arr[], int n) {
+    return static_cast<double>(calculateSum(arr, n)) / n;
+}
+
+// Function to find the maximum value
+int findMax(int arr[], int n) {
+    int max = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+// Function to find the minimum value
+int findMin(int arr[], int n) {
+    int min = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+    return min;
+}
+
