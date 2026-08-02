@@ -138,3 +138,36 @@ void deleteTask(vector<string>& tasks) {
     cout << "Task \"" << removed << "\" has been removed." << endl;
 }
 
+int main() {
+    vector<string> tasks;
+    int choice;
+    bool running = true;
+
+    while (running) {
+        displayMenu();
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                addTask(tasks);
+                break;
+            case 2:
+                viewTasks(tasks);
+                break;
+            case 3:
+                deleteTask(tasks);
+                break;
+            case 4:
+                cout << "Goodbye!" << endl;
+                running = false;
+                break;
+            default:
+                cout << "Error: Invalid choice. Please enter 1-4." << endl;
+                break;
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}
