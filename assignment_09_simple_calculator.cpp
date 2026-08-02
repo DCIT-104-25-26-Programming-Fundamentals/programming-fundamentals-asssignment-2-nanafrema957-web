@@ -130,3 +130,75 @@ void displayMenu() {
     cout << "7. Quit" << endl;
     cout << "Select an operation (1-7): ";
 }
+
+int main() {
+    int choice;
+    bool running = true;
+
+    cout << fixed << setprecision(2);
+
+    while (running) {
+        displayMenu();
+        cin >> choice;
+
+        if (choice == 7) {
+            cout << "Goodbye!" << endl;
+            running = false;
+            continue;
+        }
+
+        if (choice < 1 || choice > 7) {
+            cout << "Error: Invalid choice. Please enter 1-7." << endl;
+            cout << endl;
+            continue;
+        }
+
+        double num1, num2, result;
+        char op;
+
+        cout << "Enter first number : ";
+        cin >> num1;
+        cout << "Enter second number: ";
+        cin >> num2;
+
+        switch (choice) {
+            case 1:
+                result = add(num1, num2);
+                op = '+';
+                cout << "Result: " << num1 << " " << op << " " << num2 << " = " << result << endl;
+                break;
+            case 2:
+                result = subtract(num1, num2);
+                op = '-';
+                cout << "Result: " << num1 << " " << op << " " << num2 << " = " << result << endl;
+                break;
+            case 3:
+                result = multiply(num1, num2);
+                op = '*';
+                cout << "Result: " << num1 << " " << op << " " << num2 << " = " << result << endl;
+                break;
+            case 4:
+                if (!divide(num1, num2, result)) {
+                    cout << "Error: Cannot divide by zero." << endl;
+                } else {
+                    cout << "Result: " << num1 << " / " << num2 << " = " << result << endl;
+                }
+                break;
+            case 5:
+                if (!modulus(num1, num2, result)) {
+                    cout << "Error: Cannot divide by zero." << endl;
+                } else {
+                    cout << "Result: " << num1 << " % " << num2 << " = " << result << endl;
+                }
+                break;
+            case 6:
+                result = power(num1, num2);
+                cout << "Result: " << num1 << " ^ " << num2 << " = " << result << endl;
+                break;
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}
