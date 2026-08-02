@@ -184,3 +184,37 @@ void displayMenu() {
     cout << "4. Quit" << endl;
     cout << "Enter your choice (1-4): ";
 }
+
+int main() {
+    vector<Student> students;
+    int choice;
+    bool running = true;
+
+    while (running) {
+        displayMenu();
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                addStudent(students);
+                break;
+            case 2:
+                displayAllStudents(students);
+                break;
+            case 3:
+                showAverageForStudent(students);
+                break;
+            case 4:
+                cout << "Goodbye!" << endl;
+                running = false;
+                break;
+            default:
+                cout << "Error: Invalid choice. Please enter 1-4." << endl;
+                break;
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}
