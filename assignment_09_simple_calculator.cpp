@@ -73,3 +73,60 @@
 #include <cmath>
 using namespace std;
 
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+// Function for addition
+double add(double a, double b) {
+    return a + b;
+}
+
+// Function for subtraction
+double subtract(double a, double b) {
+    return a - b;
+}
+
+// Function for multiplication
+double multiply(double a, double b) {
+    return a * b;
+}
+
+// Function for division (returns true if successful, false if divide by zero)
+bool divide(double a, double b, double& result) {
+    if (b == 0) {
+        return false;
+    }
+    result = a / b;
+    return true;
+}
+
+// Function for modulus (returns true if successful, false if divide by zero)
+bool modulus(double a, double b, double& result) {
+    if (b == 0) {
+        return false;
+    }
+    result = static_cast<int>(a) % static_cast<int>(b);
+    return true;
+}
+
+// Function for exponentiation
+double power(double base, double exponent) {
+    return pow(base, exponent);
+}
+
+// Function to display the menu
+void displayMenu() {
+    cout << "============================" << endl;
+    cout << "     SIMPLE CALCULATOR" << endl;
+    cout << "============================" << endl;
+    cout << "1. Addition" << endl;
+    cout << "2. Subtraction" << endl;
+    cout << "3. Multiplication" << endl;
+    cout << "4. Division" << endl;
+    cout << "5. Modulus" << endl;
+    cout << "6. Exponentiation" << endl;
+    cout << "7. Quit" << endl;
+    cout << "Select an operation (1-7): ";
+}
